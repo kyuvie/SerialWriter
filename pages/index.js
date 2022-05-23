@@ -1,20 +1,44 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+// import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Serial Writer</title>
         <meta name="description" content="Write data to flash memory using web usb" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
+        <div className="container">
+          <div className="row">
+            <div className="col-6" style={{backgroundColor: 'blue'}}>
+              1 of 2
+            </div>
+            <div className="col-6" style={{backgroundColor: 'brown'}}>
+              2 of 2
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-4">
+              1 of 3
+            </div>
+            <div className="col-4">
+              2 of 3
+            </div>
+            <div className="col-4">
+              3 of 3
+            </div>
+          </div>
+        </div>
+        {/*
         <h1 className={styles.title}>
           Serial Writer
         </h1>
+  */}
 
         {/*
         <p className={styles.description}>
@@ -56,6 +80,7 @@ export default function Home() {
       */}
       </main>
 
+      {/*
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -68,6 +93,7 @@ export default function Home() {
           </span>
         </a>
       </footer>
+    */}
     </div>
   )
 }
