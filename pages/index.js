@@ -15,16 +15,12 @@ export default function Home() {
       <main>
         <div className="container">
           <div className="row">
-            <div className="col-6" style={{backgroundColor: 'blue'}}>
-              1 of 2
-            </div>
-            <div className="col-6" style={{backgroundColor: 'brown'}}>
-              2 of 2
-            </div>
+            <h1 className="display-6">Serial Writer</h1>
           </div>
+          <hr />
           <div className="row">
-            <div className="col-4">
-              1 of 3
+            <div className="col-4" style={{height: "500px", backgroundColor: "blue"}}>
+            <div className="overflow-auto">abcdefh ijlm nop qrstu vwxyz ABCD EFGHIJK LMNOP QRST UVWXYZ</div>
             </div>
             <div className="col-4">
               2 of 3
