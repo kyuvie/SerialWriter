@@ -14,24 +14,26 @@ export default function Home() {
 
       <main>
         <div className="container">
+          <div className='fixed-bottom'>
+            <div style={{ position: 'fixed', bottom: '0px', right: '0px' }}>
+              <Image src="/zundamon_standing.png" alt="Zundamon Standing" layout={'intrinsic'} width={216} height={330} />
+            </div>
+          </div>
           <div className="row">
             <div className="col-4">
               <h1 className="display-6">Serial Writer</h1>
             </div>
-            <div className="col-6">
+            <div className="col-8">
               <div className='row'>
                 <div className='col'>
                   <div className="progress">
                     <div className="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>                
+                  </div>
                 </div>
                 <div className='col-auto'>
                   <button type="button" className="btn btn-dark">Dark</button>
                 </div>
               </div>
-            </div>
-            <div className="col-2">
-              <h1>ずんだもん</h1>
             </div>
           </div>
           <div className="row">
