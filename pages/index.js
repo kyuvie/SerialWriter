@@ -15,18 +15,39 @@ export default function Home() {
       <main>
         <div className="container">
           <div className="row">
-            <h1 className="display-6">Serial Writer</h1>
+            <div className="col-4">
+              <h1 className="display-6">Serial Writer</h1>
+            </div>
+            <div className="col-6">
+              <div className='row'>
+                <div className='col'>
+                  <div className="progress">
+                    <div className="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>                
+                </div>
+                <div className='col-auto'>
+                  <button type="button" className="btn btn-dark">Dark</button>
+                </div>
+              </div>
+            </div>
+            <div className="col-2">
+              <h1>ずんだもん</h1>
+            </div>
           </div>
-          <hr />
           <div className="row">
-            <div className="col-4" style={{height: "500px", backgroundColor: "blue"}}>
-            <div className="overflow-auto">abcdefh ijlm nop qrstu vwxyz ABCD EFGHIJK LMNOP QRST UVWXYZ</div>
+            <div className="col-4" style={{ height: "500px", backgroundColor: "blue" }}>
+              <div className="overflow-auto, text-break">abcdefhijlmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
             </div>
-            <div className="col-4">
-              2 of 3
+            <div className="col-4" style={{ height: "500px", backgroundColor: "red" }}>
+              <div className="overflow-auto, text-break">abcdefhijlmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
             </div>
-            <div className="col-4">
-              3 of 3
+            <div className="col-4" style={{ height: "500px", backgroundColor: "yellow" }}>
+              <div className="overflow-auto, text-break">abcdefhijlmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12" style={{ height: "200px", backgroundColor: "green" }}>
+
             </div>
           </div>
         </div>
