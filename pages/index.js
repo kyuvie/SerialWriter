@@ -38,18 +38,132 @@ export default function Home() {
           </div>
           <div className="row">
             <div className="col-4" style={{ height: "500px", backgroundColor: "blue" }}>
-              <div className="overflow-auto, text-break">abcdefhijlmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+              <div
+                data-bs-spy="scroll"
+                data-bs-target="#navbar-example2"
+                data-bs-offset="0"
+                className="overflow-scroll"
+                tabindex="0"
+                style={{ height: "500px" }}
+              >
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading3">Thidd heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading3">Thidd heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading3">Thidd heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>...</p>
+              </div>
             </div>
             <div className="col-4" style={{ height: "500px", backgroundColor: "red" }}>
-              <div className="overflow-auto, text-break">abcdefhijlmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+              <div
+                data-bs-spy="scroll"
+                data-bs-target="#navbar-example2"
+                data-bs-offset="0"
+                className="overflow-scroll"
+                tabindex="0"
+                style={{ height: "500px" }}
+              >
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading3">Thidd heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading3">Thidd heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading3">Thidd heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>...</p>
+              </div>
             </div>
             <div className="col-4" style={{ height: "500px", backgroundColor: "yellow" }}>
-              <div className="overflow-auto, text-break">abcdefhijlmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+              <div
+                data-bs-spy="scroll"
+                data-bs-target="#navbar-example2"
+                data-bs-offset="0"
+                className="overflow-scroll"
+                tabindex="0"
+                style={{ height: "500px" }}
+              >
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading3">Thidd heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading3">Thidd heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading1">First heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading2">Second heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading3">Thidd heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading4">Fourth heading</h4>
+                <p>...</p>
+                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                <p>...</p>
+              </div>
             </div>
           </div>
           <div className="row">
             <div className="col-12" style={{ height: "200px", backgroundColor: "green" }}>
-
+              <textarea className="form-control" id="exampleFormControlTextarea1" rows="7" readOnly={true}></textarea>
             </div>
           </div>
         </div>
