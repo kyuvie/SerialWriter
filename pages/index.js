@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ backgroundColor: '#283238'}}>
       <Head>
         <title>Serial Writer</title>
         <meta name="description" content="Write data to flash memory using web usb" />
@@ -13,25 +12,26 @@ export default function Home() {
       </Head>
 
       <main>
+        <div> Hello world</div>
         <div className="container">
           <div className='fixed-bottom'>
             <div style={{ position: 'fixed', bottom: '0px', right: '0px' }}>
               <Image src="/zundamon_standing.png" alt="Zundamon Standing" layout={'intrinsic'} width={216} height={330} />
             </div>
           </div>
-          <div className="row">
+          <div className="row rounded align-items-center">
             <div className="col-4">
-              <h1 className="display-6">Serial Writer</h1>
+              <h1 className="display-6 text-white">Serial Writer</h1>
             </div>
             <div className="col-8">
               <div className='row'>
                 <div className='col'>
-                  <div className="progress">
+                  <div className="progress mt-2">
                     <div className="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
                 <div className='col-auto'>
-                  <button type="button" className="btn btn-dark">Dark</button>
+                  <button type="button" className="btn btn-dark" style={{ backgroundColor: '#4D4D4D' }}>Run</button>
                 </div>
               </div>
             </div>
@@ -43,7 +43,7 @@ export default function Home() {
                 data-bs-target="#navbar-example2"
                 data-bs-offset="0"
                 className="overflow-scroll"
-                tabindex="0"
+                tabIndex="0"
                 style={{ height: "500px" }}
               >
                 <h4 id="scrollspyHeading1">First heading</h4>
@@ -84,7 +84,7 @@ export default function Home() {
                 data-bs-target="#navbar-example2"
                 data-bs-offset="0"
                 className="overflow-scroll"
-                tabindex="0"
+                tabIndex="0"
                 style={{ height: "500px" }}
               >
                 <h4 id="scrollspyHeading1">First heading</h4>
@@ -125,7 +125,7 @@ export default function Home() {
                 data-bs-target="#navbar-example2"
                 data-bs-offset="0"
                 className="overflow-scroll"
-                tabindex="0"
+                tabIndex="0"
                 style={{ height: "500px" }}
               >
                 <h4 id="scrollspyHeading1">First heading</h4>
@@ -163,54 +163,10 @@ export default function Home() {
           </div>
           <div className="row">
             <div className="col-12" style={{ height: "200px", backgroundColor: "green" }}>
-              <textarea className="form-control" id="exampleFormControlTextarea1" rows="7" readOnly={true}></textarea>
+              <textarea className="form-control mt-2" id="exampleFormControlTextarea1" rows="7" readOnly={true}></textarea>
             </div>
           </div>
         </div>
-        {/*
-        <h1 className={styles.title}>
-          Serial Writer
-        </h1>
-  */}
-
-        {/*
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-        */}
-
-        {/*
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      */}
       </main>
 
       {/*
