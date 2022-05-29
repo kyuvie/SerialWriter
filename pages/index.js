@@ -3,16 +3,15 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div style={{ backgroundColor: '#283238'}}>
+    <div style={{ backgroundColor: '#283238' }}>
       <Head>
-        <title>Serial Writer</title>
+        <title>SC</title>
         <meta name="description" content="Write data to flash memory using web usb" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <div> Hello world</div>
         <div className="container">
           <div className='fixed-bottom'>
             <div style={{ position: 'fixed', bottom: '0px', right: '0px' }}>
@@ -37,7 +36,7 @@ export default function Home() {
             </div>
           </div>
           <div className="row">
-            <div className="col-4" style={{ height: "500px", backgroundColor: "blue" }}>
+            <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
               <div
                 data-bs-spy="scroll"
                 data-bs-target="#navbar-example2"
@@ -46,39 +45,49 @@ export default function Home() {
                 tabIndex="0"
                 style={{ height: "500px" }}
               >
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading3">Thidd heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading3">Thidd heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading3">Thidd heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>...</p>
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" className="card-link">Card link</a>
+                    <a href="#" className="card-link">Another link</a>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" className="card-link">Card link</a>
+                    <a href="#" className="card-link">Another link</a>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" className="card-link">Card link</a>
+                    <a href="#" className="card-link">Another link</a>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" className="card-link">Card link</a>
+                    <a href="#" className="card-link">Another link</a>
+                  </div>
+                </div>
+
               </div>
             </div>
-            <div className="col-4" style={{ height: "500px", backgroundColor: "red" }}>
+            <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
               <div
                 data-bs-spy="scroll"
                 data-bs-target="#navbar-example2"
@@ -87,83 +96,55 @@ export default function Home() {
                 tabIndex="0"
                 style={{ height: "500px" }}
               >
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading3">Thidd heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading3">Thidd heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading3">Thidd heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>...</p>
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" className="card-link">Card link</a>
+                    <a href="#" className="card-link">Another link</a>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" className="card-link">Card link</a>
+                    <a href="#" className="card-link">Another link</a>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" className="card-link">Card link</a>
+                    <a href="#" className="card-link">Another link</a>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" className="card-link">Card link</a>
+                    <a href="#" className="card-link">Another link</a>
+                  </div>
+                </div>
+
               </div>
             </div>
-            <div className="col-4" style={{ height: "500px", backgroundColor: "yellow" }}>
-              <div
-                data-bs-spy="scroll"
-                data-bs-target="#navbar-example2"
-                data-bs-offset="0"
-                className="overflow-scroll"
-                tabIndex="0"
-                style={{ height: "500px" }}
-              >
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading3">Thidd heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading3">Thidd heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading1">First heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading2">Second heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading3">Thidd heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading4">Fourth heading</h4>
-                <p>...</p>
-                <h4 id="scrollspyHeading5">Fifth heading</h4>
-                <p>...</p>
-              </div>
+            <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
+                <textarea className="form-control mt-2" id="exampleFormControlTextarea1" rows="19" readOnly={true} style={{ backgroundColor: "#ffffff" }}></textarea>
             </div>
           </div>
           <div className="row">
-            <div className="col-12" style={{ height: "200px", backgroundColor: "green" }}>
-              <textarea className="form-control mt-2" id="exampleFormControlTextarea1" rows="7" readOnly={true}></textarea>
+            <div className="col-12" style={{ height: "200px", backgroundColor: "#d3d3d3" }}>
+              <textarea className="form-control mt-2" id="exampleFormControlTextarea1" rows="7" readOnly={true} style={{ backgroundColor: "#ffffff" }}></textarea>
             </div>
           </div>
         </div>
