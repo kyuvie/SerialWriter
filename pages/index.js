@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div style={{ backgroundColor: '#283238' }}>
       <Head>
-        <title>SC</title>
+        <title>Serial Writer</title>
         <meta name="description" content="Write data to flash memory using web usb" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -47,11 +47,21 @@ export default function Home() {
               >
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
+                    <h5 className="card-title">Command</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">command description</h6>
+                    <div className="row align-items-center">
+                      <div className="col-auto">
+                        <label htmlFor="inputPassword6" className="col-form-label">value</label>
+                      </div>
+                      <div className="col-auto">
+                        <input type="password" id="inputPassword6" className="form-control form-control-sm" aria-describedby="passwordHelpInline" />
+                      </div>
+                    </div>
+                    <div className="row align-items-center justify-content-end pt-4">
+                      <div className="col-auto">
+                      <button type="button" class="btn btn-primary btn-sm">add</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -139,7 +149,7 @@ export default function Home() {
               </div>
             </div>
             <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
-                <textarea className="form-control mt-2" id="exampleFormControlTextarea1" rows="19" readOnly={true} style={{ backgroundColor: "#ffffff" }}></textarea>
+              <textarea className="form-control mt-2" id="exampleFormControlTextarea1" rows="19" readOnly={true} style={{ backgroundColor: "#ffffff" }}></textarea>
             </div>
           </div>
           <div className="row">
