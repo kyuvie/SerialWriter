@@ -2,8 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react'
 
-
-
 export default function Home() {
   const [middleCards, setMiddleCards] = useState([])
 
@@ -31,6 +29,13 @@ export default function Home() {
         </div>
       </div>
     </div>)
+  }
+  
+  const asyncRun = async () => {
+    
+    for (const i in  middleCards) {
+      console.log(i)
+    }
   }
 
   return (
@@ -61,7 +66,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className='col-auto'>
-                  <button type="button" className="btn btn-dark" style={{ backgroundColor: '#4D4D4D' }}>Run</button>
+                  <button type="button" className="btn btn-dark" style={{ backgroundColor: '#4D4D4D' }} onClick={asyncRun}>Run</button>
                 </div>
               </div>
             </div>
