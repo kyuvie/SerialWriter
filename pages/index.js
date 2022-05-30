@@ -1,7 +1,38 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
+
+
 
 export default function Home() {
+  const [middleCards, setMiddleCards] = useState([])
+
+  function addToMiddleCards() {
+    setMiddleCards([...middleCards, create_middle_card()])
+  }
+
+  function create_middle_card(obj) {
+    return (<div className="card">
+      <div className="card-body">
+        <h5 className="card-title">Command</h5>
+        <h6 className="card-subtitle mb-2 text-muted">command description</h6>
+        <div className="row align-items-center">
+          <div className="col-auto">
+            <label htmlFor="inputPassword6" className="col-form-label">value:</label>
+          </div>
+          <div className="col-auto">
+            <div id="inputPassword6" className="fs-5">sample</div>
+          </div>
+        </div>
+        <div className="row align-items-center justify-content-end pt-4">
+          <div className="col-auto">
+            <button type="button" className="btn btn-primary btn-sm">delete</button>
+          </div>
+        </div>
+      </div>
+    </div>)
+  }
+
   return (
     <div style={{ backgroundColor: '#283238' }}>
       <Head>
@@ -51,7 +82,7 @@ export default function Home() {
                     <h6 className="card-subtitle mb-2 text-muted">command description</h6>
                     <div className="row align-items-center">
                       <div className="col-auto">
-                        <label htmlFor="inputPassword6" className="col-form-label">value</label>
+                        <label htmlFor="inputPassword6" className="col-form-label">value:</label>
                       </div>
                       <div className="col-auto">
                         <input type="password" id="inputPassword6" className="form-control form-control-sm" aria-describedby="passwordHelpInline" />
@@ -59,7 +90,7 @@ export default function Home() {
                     </div>
                     <div className="row align-items-center justify-content-end pt-4">
                       <div className="col-auto">
-                      <button type="button" class="btn btn-primary btn-sm">add</button>
+                        <button type="button" className="btn btn-primary btn-sm" onClick={addToMiddleCards}>add</button>
                       </div>
                     </div>
                   </div>
@@ -106,45 +137,7 @@ export default function Home() {
                 tabIndex="0"
                 style={{ height: "500px" }}
               >
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
-                  </div>
-                </div>
-
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
-                  </div>
-                </div>
-
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
-                  </div>
-                </div>
-
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
-                  </div>
-                </div>
+                {middleCards}
 
               </div>
             </div>

@@ -13,9 +13,11 @@ function create_middle_card(obj) {
             </div>
             <div className="row align-items-center justify-content-end pt-4">
                 <div className="col-auto">
-                    <button type="button" class="btn btn-primary btn-sm">add</button>
+                    <button type="button" className="btn btn-primary btn-sm">add</button>
                 </div>
             </div>
         </div>
     </div>)
 }
+
+export default create_middle_card
