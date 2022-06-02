@@ -15,27 +15,24 @@ class Home extends React.Component {
     this.addToMiddleCards = this.addToMiddleCards.bind(this)
     this.asyncRun = this.asyncRun.bind(this)
 
-    this.cardsRef = []
-
-    this.indexOfCards = 0
+    this.cardsRefMap = new Map()
 
   }
 
   addToMiddleCards() {
-    this.cardsRef.push(createRef())
+    const ref = createRef()
+    this.cardsRefMap.set(Home.id, ref)
+    const middleCard = <MiddleCard ref={ref} key={Home.id} />
     this.setState(
-      { middleCards: [...this.state.middleCards, <MiddleCard ref={this.cardsRef[this.indexOfCards]} key={Home.id} />] }
+      { middleCards: [...this.state.middleCards, middleCard] }
     )
-
-    this.indexOfCards += 1
 
     Home.id += 1
   }
 
   async asyncRun() {
-    for (const card of this.cardsRef) {
-      console.log(card.current.key)
-      if (card.current.props.key % 2 == 0) {
+    for (const [i, card] of this.cardsRefMap) {
+      if (i % 2 == 0) {
         card.current.toGreen()
       }
       else {
