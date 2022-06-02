@@ -24,16 +24,11 @@ class Home extends React.Component {
     const ref = createRef()
     const middleCard = <MiddleCard ref={ref} key={this.id} id={this.id} deleteFunc={this.deleteMiddleCardCallback} />
 
-    console.log('add:')
-    console.log(this.id)
-
     this.setState(
       (state, props) => {
         return { middleCards: state.middleCards.set(this.id, {ref, middleCard}) }
       }
     )
-
-
   }
 
   async asyncRun() {
@@ -48,16 +43,16 @@ class Home extends React.Component {
   }
 
   deleteMiddleCardCallback(key) {
-    console.log(this.state.middleCards)
-
-    console.log(this.state.middleCards.delete(key))
+    if (!this.state.middleCards.has(key)) {
+      alert('Delete Error')
+    }
+    this.state.middleCards.delete(key)
     this.setState((state, props) => {
       return { middleCards: new Map(state.middleCards) }
     })
   }
 
   render() {
-
     const tmpMiddleCards = []
 
     for (const [i, card] of this.state.middleCards) {
@@ -76,11 +71,11 @@ class Home extends React.Component {
         <main>
           <div className="container">
             <div className='fixed-bottom'>
-              {/*
+            {/*
             <div style={{ position: 'fixed', bottom: '0px', right: '0px' }}>
               <Image src="/zundamon_standing.png" alt="Zundamon Standing" layout={'intrinsic'} width={216} height={330} />
             </div>
-  */}
+            */}
             </div>
             <div className="row rounded align-items-center">
               <div className="col-4">

@@ -27,8 +27,6 @@ class MiddleCard extends React.Component {
     }
 
     deleteSelfFromParentList() {
-        console.log('DelteSelfFromParentList')
-        console.log(this.props.id)
         this.props.deleteFunc(this.props.id)
     }
 
