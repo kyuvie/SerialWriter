@@ -5,43 +5,65 @@ import MiddleCard from '../components/MiddleCard'
 
 
 class Home extends React.Component {
-  static id = 0
   constructor(props) {
     super(props)
     this.state = {
-      middleCards: []
+      middleCards: new Map()
     }
 
     this.addToMiddleCards = this.addToMiddleCards.bind(this)
     this.asyncRun = this.asyncRun.bind(this)
+    this.deleteMiddleCardCallback = this.deleteMiddleCardCallback.bind(this)
 
-    this.cardsRefMap = new Map()
-
+    this.id = 0
   }
 
   addToMiddleCards() {
+    this.id += 1
+
     const ref = createRef()
-    this.cardsRefMap.set(Home.id, ref)
-    const middleCard = <MiddleCard ref={ref} key={Home.id} />
+    const middleCard = <MiddleCard ref={ref} key={this.id} id={this.id} deleteFunc={this.deleteMiddleCardCallback} />
+
+    console.log('add:')
+    console.log(this.id)
+
     this.setState(
-      { middleCards: [...this.state.middleCards, middleCard] }
+      (state, props) => {
+        return { middleCards: state.middleCards.set(this.id, {ref, middleCard}) }
+      }
     )
 
-    Home.id += 1
+
   }
 
   async asyncRun() {
-    for (const [i, card] of this.cardsRefMap) {
+    for (const [i, card] of this.state.middleCards) {
       if (i % 2 == 0) {
-        card.current.toGreen()
+        card.ref.current.toGreen()
       }
       else {
-        card.current.toRed()
+        card.ref.current.toRed()
       }
     }
   }
 
+  deleteMiddleCardCallback(key) {
+    console.log(this.state.middleCards)
+
+    console.log(this.state.middleCards.delete(key))
+    this.setState((state, props) => {
+      return { middleCards: new Map(state.middleCards) }
+    })
+  }
+
   render() {
+
+    const tmpMiddleCards = []
+
+    for (const [i, card] of this.state.middleCards) {
+      tmpMiddleCards.push(card.middleCard)
+    }
+
     return (
       <div style={{ backgroundColor: '#283238' }}>
         <Head>
@@ -148,7 +170,7 @@ class Home extends React.Component {
                   tabIndex="0"
                   style={{ height: "500px" }}
                 >
-                  {this.state.middleCards}
+                  {tmpMiddleCards}
 
                 </div>
               </div>
