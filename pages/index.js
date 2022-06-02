@@ -34,7 +34,13 @@ class Home extends React.Component {
 
   async asyncRun() {
     for (const card of this.cardsRef) {
-      card.current.toGreen()
+      console.log(card.current.key)
+      if (card.current.props.key % 2 == 0) {
+        card.current.toGreen()
+      }
+      else {
+        card.current.toRed()
+      }
     }
   }
 
