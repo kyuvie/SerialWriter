@@ -1,6 +1,5 @@
 import React from "react";
 
-
 class ProgressBar extends React.Component {
     constructor(props) {
         super(props)
@@ -41,9 +40,10 @@ class ProgressBar extends React.Component {
     }
 
     percentage(percentage) {
+        console.log(Math.trunc(percentage))
         if (0 <= percentage && percentage <= 100) {
             this.setState({
-                percentage: percentage
+                percentage: Math.trunc(percentage)
             })
         }
     }
@@ -57,7 +57,7 @@ class ProgressBar extends React.Component {
     render() {
         return (
             <div className="progress mt-2">
-                <div className={`progress-bar w-${this.state.percentage} ${this.state.color} ${this.state.isStriped ? 'progress-bar-striped': ''}`} role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className={`progress-bar ${this.state.color} ${this.state.isStriped ? 'progress-bar-striped': ''}`} role="progressbar" style={{"width": `${this.state.percentage}%`}} aria-valuenow={this.state.percentage} aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         )
     }

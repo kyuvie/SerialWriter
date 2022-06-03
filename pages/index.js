@@ -69,6 +69,7 @@ class Home extends React.Component {
         card.ref.current.toGreen()
       }
       progress += step
+      console.log(progress)
       this.progressBarRef.current.percentage(progress)
     }
     if (!failed) {
@@ -109,7 +110,7 @@ class Home extends React.Component {
             <Zundamon ref={this.zundamonRef}/>
             <div className="row rounded align-items-center">
               <div className="col-4">
-                <h1 className="display-6 text-white">Serial Writer</h1>
+                <h1 className="display-6 text-white">SC</h1>
               </div>
               <div className="col-8">
                 <div className='row'>
