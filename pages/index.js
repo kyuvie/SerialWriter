@@ -137,7 +137,6 @@ class Home extends React.Component {
                   style={{ height: "500px" }}
                 >
                   {middleCards}
-
                 </div>
               </div>
               <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
