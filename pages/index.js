@@ -1,8 +1,13 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import React, { useState, useRef, createRef } from 'react'
 import MiddleCard from '../components/MiddleCard'
+import Zundamon from '../components/Zundamon'
 
+const sleep = (ms) => new Promise(resolve => {
+  setTimeout(() => {
+    resolve()
+  }, ms)
+})
 
 class Home extends React.Component {
   constructor(props) {
@@ -16,6 +21,8 @@ class Home extends React.Component {
     this.deleteMiddleCardCallback = this.deleteMiddleCardCallback.bind(this)
 
     this.id = 0
+
+    this.zundamonRef = createRef()
   }
 
   addToMiddleCards() {
@@ -32,14 +39,14 @@ class Home extends React.Component {
   }
 
   async asyncRun() {
+    this.zundamonRef.current.toExecuting()
+
     for (const [i, card] of this.state.middleCards) {
-      if (i % 2 == 0) {
-        card.ref.current.toGreen()
-      }
-      else {
-        card.ref.current.toRed()
-      }
+      await sleep(2000)
+      card.ref.current.toGreen()
     }
+
+    this.zundamonRef.current.toHappy()
   }
 
   deleteMiddleCardCallback(key) {
@@ -53,10 +60,10 @@ class Home extends React.Component {
   }
 
   render() {
-    const tmpMiddleCards = []
+    const middleCards = []
 
     for (const [i, card] of this.state.middleCards) {
-      tmpMiddleCards.push(card.middleCard)
+      middleCards.push(card.middleCard)
     }
 
     return (
@@ -70,13 +77,7 @@ class Home extends React.Component {
 
         <main>
           <div className="container">
-            <div className='fixed-bottom'>
-            {/*
-            <div style={{ position: 'fixed', bottom: '0px', right: '0px' }}>
-              <Image src="/zundamon_standing.png" alt="Zundamon Standing" layout={'intrinsic'} width={216} height={330} />
-            </div>
-            */}
-            </div>
+            <Zundamon ref={this.zundamonRef}/>
             <div className="row rounded align-items-center">
               <div className="col-4">
                 <h1 className="display-6 text-white">Serial Writer</h1>
@@ -165,7 +166,7 @@ class Home extends React.Component {
                   tabIndex="0"
                   style={{ height: "500px" }}
                 >
-                  {tmpMiddleCards}
+                  {middleCards}
 
                 </div>
               </div>
