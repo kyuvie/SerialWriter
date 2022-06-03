@@ -26,7 +26,6 @@ class FrontCard extends React.Component {
                 </div>
             </div>
         </div>
-
         )
     }
 }

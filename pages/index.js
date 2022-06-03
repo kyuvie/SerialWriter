@@ -3,6 +3,7 @@ import React, { useState, useRef, createRef } from 'react'
 import MiddleCard from '../components/MiddleCard'
 import Zundamon from '../components/Zundamon'
 import FrontCard from '../components/FrontCard'
+import ProgressBar from '../components/ProgressBar'
 
 const sleep = (ms) => new Promise(resolve => {
   setTimeout(() => {
@@ -25,8 +26,9 @@ class Home extends React.Component {
     this.id = 0
 
     this.zundamonRef = createRef()
+    this.progressBarRef = createRef()
 
-    this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards}/>]
+    this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards} />]
   }
 
   addToMiddleCards() {
@@ -46,6 +48,8 @@ class Home extends React.Component {
     this.zundamonRef.current.toExecuting()
 
     let failed = false
+    const step = 100.0 / this.state.middleCards.size
+    let progress = 0
 
     for (const [i, card] of this.state.middleCards) {
       await sleep(2000)
@@ -58,6 +62,8 @@ class Home extends React.Component {
       else {
         card.ref.current.toGreen()
       }
+      progress += step
+      this.progressBarRef.current.percentage(progress)
     }
     if (!failed) {
       this.zundamonRef.current.toHappy()
@@ -100,9 +106,7 @@ class Home extends React.Component {
               <div className="col-8">
                 <div className='row'>
                   <div className='col'>
-                    <div className="progress mt-2">
-                      <div className="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    <ProgressBar ref={this.progressBarRef} />
                   </div>
                   <div className='col-auto'>
                     <button type="button" className="btn btn-dark" style={{ backgroundColor: '#4D4D4D' }} onClick={this.asyncRun}>Run</button>
