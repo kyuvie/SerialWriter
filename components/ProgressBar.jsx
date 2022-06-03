@@ -7,6 +7,7 @@ class ProgressBar extends React.Component {
         this.state = {
             color: 'bg-success',
             percentage: 0,
+            isStriped: false
         }
         this.toGreen = this.toGreen.bind(this)
         this.toYellow = this.toYellow.bind(this)
@@ -47,10 +48,16 @@ class ProgressBar extends React.Component {
         }
     }
 
+    setStriped(onoff) {
+        this.setState({
+            isStriped: onoff
+        })
+    }
+
     render() {
         return (
             <div className="progress mt-2">
-                <div className={`progress-bar w-${this.state.percentage} ${this.state.color}`} role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className={`progress-bar w-${this.state.percentage} ${this.state.color} ${this.state.isStriped ? 'progress-bar-striped': ''}`} role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         )
     }

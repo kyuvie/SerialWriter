@@ -51,6 +51,8 @@ class Home extends React.Component {
     const step = 100.0 / this.state.middleCards.size
     let progress = 0
 
+    this.progressBarRef.current.setStriped(true)
+
     for (const [i, card] of this.state.middleCards) {
       await sleep(2000)
       if (i % 3 == 0) {
@@ -68,6 +70,8 @@ class Home extends React.Component {
     if (!failed) {
       this.zundamonRef.current.toHappy()
     }
+
+    this.progressBarRef.current.setStriped(false)
   }
 
   deleteMiddleCardCallback(key) {
