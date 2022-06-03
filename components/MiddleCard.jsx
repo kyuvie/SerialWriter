@@ -5,25 +5,40 @@ import React from 'react'
 class MiddleCard extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { style: {
-            backgroundColor: 'white',
-        }}
+        this.state = {
+            style: {
+                backgroundColor: 'white',
+            }
+        }
 
         this.toGreen = this.toGreen.bind(this)
         this.toRed = this.toRed.bind(this)
+        this.toWhite = this.toWhite.bind(this)
         this.deleteSelfFromParentList = this.deleteSelfFromParentList.bind(this)
     }
 
     toGreen() {
-        this.setState( {style: {
-            backgroundColor: 'palegreen',
-        }})
+        this.setState({
+            style: {
+                backgroundColor: 'palegreen',
+            }
+        })
     }
 
     toRed() {
-        this.setState( {style: {
-            backgroundColor: 'lightpink',
-        }})
+        this.setState({
+            style: {
+                backgroundColor: 'lightpink',
+            }
+        })
+    }
+
+    toWhite() {
+        this.setState({
+            style: {
+                backgroundColor: 'white',
+            }
+        })
     }
 
     deleteSelfFromParentList() {

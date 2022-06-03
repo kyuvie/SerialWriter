@@ -54,6 +54,10 @@ class Home extends React.Component {
     this.progressBarRef.current.setStriped(true)
 
     for (const [i, card] of this.state.middleCards) {
+      card.ref.current.toWhite()
+    }
+
+    for (const [i, card] of this.state.middleCards) {
       await sleep(2000)
       if (i % 3 == 0) {
         card.ref.current.toRed()
