@@ -4,6 +4,8 @@ import MiddleCard from '../components/MiddleCard'
 import Zundamon from '../components/Zundamon'
 import FrontCard from '../components/FrontCard'
 import ProgressBar from '../components/ProgressBar'
+import NotificationTextArea from '../components/NotificationTextarea'
+import CommunicationTextarea from '../components/CommunicationTextArea'
 
 const sleep = (ms) => new Promise(resolve => {
   setTimeout(() => {
@@ -27,8 +29,10 @@ class Home extends React.Component {
 
     this.zundamonRef = createRef()
     this.progressBarRef = createRef()
+    this.notificationTextAreaRef = createRef()
+    this.comTextareaRef = createRef()
 
-    this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards} />]
+    this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1}/>]
   }
 
   addToMiddleCards() {
@@ -39,12 +43,17 @@ class Home extends React.Component {
 
     this.setState(
       (state, props) => {
-        return { middleCards: state.middleCards.set(this.id, {ref, middleCard}) }
+        return { middleCards: state.middleCards.set(this.id, { ref, middleCard }) }
       }
     )
   }
 
   async asyncRun() {
+    if (!("serial" in navigator)) {
+      this.notificationTextAreaRef.current.println("Unable to use Web Serial API")
+    }
+    this.notificationTextAreaRef.current.println("Hello Web Serial")
+    /*
     this.zundamonRef.current.toExecuting()
 
     let failed = false
@@ -77,6 +86,7 @@ class Home extends React.Component {
     }
 
     this.progressBarRef.current.setStriped(false)
+    */
   }
 
   deleteMiddleCardCallback(key) {
@@ -107,7 +117,7 @@ class Home extends React.Component {
 
         <main>
           <div className="container">
-            <Zundamon ref={this.zundamonRef}/>
+            <Zundamon ref={this.zundamonRef} />
             <div className="row rounded align-items-center">
               <div className="col-4">
                 <h1 className="display-6 text-white">SC</h1>
@@ -149,12 +159,12 @@ class Home extends React.Component {
                 </div>
               </div>
               <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
-                <textarea className="form-control mt-2" id="exampleFormControlTextarea1" rows="19" readOnly={true} style={{ backgroundColor: "#ffffff" }}></textarea>
+                <CommunicationTextarea ref={this.comTextareaRef} />
               </div>
             </div>
             <div className="row">
               <div className="col-12" style={{ height: "200px", backgroundColor: "#d3d3d3" }}>
-                <textarea className="form-control mt-2" id="exampleFormControlTextarea1" rows="7" readOnly={true} style={{ backgroundColor: "#ffffff" }}></textarea>
+                <NotificationTextArea ref={this.notificationTextAreaRef} />
               </div>
             </div>
           </div>
