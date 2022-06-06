@@ -52,7 +52,25 @@ class Home extends React.Component {
     if (!("serial" in navigator)) {
       this.notificationTextAreaRef.current.println("Unable to use Web Serial API")
     }
-    this.notificationTextAreaRef.current.println("Hello Web Serial")
+    
+    try {
+      const port = await navigator.serial.requestPort();
+      const serialPortInfo = port.getInfo()
+      this.notificationTextAreaRef.current.println("[Connected Device Info]")
+      this.notificationTextAreaRef.current.println("UsbVendorId: 0x" + serialPortInfo.usbVendorId.toString(16))
+      this.notificationTextAreaRef.current.println("UsbProductId: 0x" + serialPortInfo.usbProductId.toString(16))
+      const serialOptions = {
+        baudRate : 9600,
+        dataBits : 8, // can't change
+        stopBits : 1, // can't change
+        parity : "none",
+        bufferSize : 255,
+        flowControl : "hardware",
+      };
+    } catch (e) {
+      this.notificationTextAreaRef.current.println("Please select a device.")
+      return
+    }
     /*
     this.zundamonRef.current.toExecuting()
 
