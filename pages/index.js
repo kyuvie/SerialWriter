@@ -6,6 +6,8 @@ import FrontCard from '../components/FrontCard'
 import ProgressBar from '../components/ProgressBar'
 import NotificationTextArea from '../components/NotificationTextarea'
 import CommunicationTextarea from '../components/CommunicationTextArea'
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
 
 const sleep = (ms) => new Promise(resolve => {
   setTimeout(() => {
@@ -32,7 +34,7 @@ class Home extends React.Component {
     this.notificationTextAreaRef = createRef()
     this.comTextareaRef = createRef()
 
-    this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1}/>]
+    this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />]
   }
 
   addToMiddleCards() {
@@ -52,7 +54,7 @@ class Home extends React.Component {
     if (!("serial" in navigator)) {
       this.notificationTextAreaRef.current.println("Unable to use Web Serial API")
     }
-    
+
     try {
       const port = await navigator.serial.requestPort();
       const serialPortInfo = port.getInfo()
@@ -60,12 +62,12 @@ class Home extends React.Component {
       this.notificationTextAreaRef.current.println("UsbVendorId: 0x" + serialPortInfo.usbVendorId.toString(16))
       this.notificationTextAreaRef.current.println("UsbProductId: 0x" + serialPortInfo.usbProductId.toString(16))
       const serialOptions = {
-        baudRate : 9600,
-        dataBits : 8, // can't change
-        stopBits : 1, // can't change
-        parity : "none",
-        bufferSize : 255,
-        flowControl : "hardware",
+        baudRate: 9600,
+        dataBits: 8, // can't change
+        stopBits: 1, // can't change
+        parity: "none",
+        bufferSize: 255,
+        flowControl: "hardware",
       };
     } catch (e) {
       this.notificationTextAreaRef.current.println("Please select a device.")
@@ -152,38 +154,47 @@ class Home extends React.Component {
               </div>
             </div>
             <div className="row">
-              <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
-                <div
-                  data-bs-spy="scroll"
-                  data-bs-target="#navbar-example2"
-                  data-bs-offset="0"
-                  className="overflow-scroll"
-                  tabIndex="0"
-                  style={{ height: "500px" }}
-                >
-                  {this.frontCards}
-                </div>
-              </div>
-              <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
-                <div
-                  data-bs-spy="scroll"
-                  data-bs-target="#navbar-example2"
-                  data-bs-offset="0"
-                  className="overflow-scroll"
-                  tabIndex="0"
-                  style={{ height: "500px" }}
-                >
-                  {middleCards}
-                </div>
-              </div>
-              <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
-                <CommunicationTextarea ref={this.comTextareaRef} />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12" style={{ height: "200px", backgroundColor: "#d3d3d3" }}>
-                <NotificationTextArea ref={this.notificationTextAreaRef} />
-              </div>
+              <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                <Tab eventKey="home" title="Sequence">
+                                   <div className="row">
+                    <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
+                      <div
+                        data-bs-spy="scroll"
+                        data-bs-target="#navbar-example2"
+                        data-bs-offset="0"
+                        className="overflow-scroll"
+                        tabIndex="0"
+                        style={{ height: "500px" }}
+                      >
+                        {this.frontCards}
+                      </div>
+                    </div>
+                    <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
+                      <div
+                        data-bs-spy="scroll"
+                        data-bs-target="#navbar-example2"
+                        data-bs-offset="0"
+                        className="overflow-scroll"
+                        tabIndex="0"
+                        style={{ height: "500px" }}
+                      >
+                        {middleCards}
+                      </div>
+                    </div>
+                    <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
+                      <CommunicationTextarea ref={this.comTextareaRef} />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-12" style={{ height: "200px", backgroundColor: "#d3d3d3" }}>
+                      <NotificationTextArea ref={this.notificationTextAreaRef} />
+                    </div>
+                  </div>
+                </Tab>
+                <Tab eventKey="profile" title="Config" style={{ backgroundColor: "white"}}>
+                  <div>World</div>
+                </Tab>
+              </Tabs>
             </div>
           </div>
         </main>
