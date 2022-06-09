@@ -8,6 +8,7 @@ import NotificationTextArea from '../components/NotificationTextarea'
 import CommunicationTextarea from '../components/CommunicationTextArea'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
+import ConfigPage from '../components/ConfigPage'
 
 const sleep = (ms) => new Promise(resolve => {
   setTimeout(() => {
@@ -156,7 +157,7 @@ class Home extends React.Component {
             <div className="row">
               <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                 <Tab eventKey="home" title="Sequence">
-                                   <div className="row">
+                  <div className="row">
                     <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
                       <div
                         data-bs-spy="scroll"
@@ -191,8 +192,12 @@ class Home extends React.Component {
                     </div>
                   </div>
                 </Tab>
-                <Tab eventKey="profile" title="Config" style={{ backgroundColor: "white"}}>
-                  <div>World</div>
+                <Tab eventKey="profile" title="Config" style={{ backgroundColor: "white" }}>
+                  <div className="row">
+                    <div className="col-12" style={{ backgroundColor: "#d3d3d3" }}>
+                      <ConfigPage />
+                    </div>
+                  </div>
                 </Tab>
               </Tabs>
             </div>
@@ -215,25 +220,7 @@ class Home extends React.Component {
     */}
       </div>
     )
-
   }
 }
 
 export default Home
-/*function Home() {
-  const [middleCards, setMiddleCards] = useState([])
-  const [style, setStyle] = useState({ 'backgroundColor': 'red' })
-
-  function addToMiddleCards() {
-    setMiddleCards([...middleCards, <MiddleCard style={style} />])
-  }
-
-  const asyncRun = async () => {
-
-    for (const card in middleCards) {
-      card.toGreen()
-    }
-  }
-
-  return ()
-}*/
