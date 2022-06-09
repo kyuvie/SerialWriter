@@ -186,21 +186,31 @@ class Home extends React.Component {
                       <CommunicationTextarea ref={this.comTextareaRef} />
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-12" style={{ height: "200px", backgroundColor: "#d3d3d3" }}>
-                      <NotificationTextArea ref={this.notificationTextAreaRef} />
-                    </div>
-                  </div>
                 </Tab>
                 <Tab eventKey="profile" title="Config" style={{ backgroundColor: "white" }}>
                   <div className="row">
-                    <div className="col-12" style={{ backgroundColor: "#d3d3d3" }}>
-                      <ConfigPage />
+                    <div className="col-12" style={{ backgroundColor: "white" }}>
+                      <div
+                        data-bs-spy="scroll"
+                        data-bs-target="#navbar-example2"
+                        data-bs-offset="0"
+                        className="overflow-scroll"
+                        tabIndex="0"
+                        style={{ height: "500px" }}
+                      >
+                        <ConfigPage />
+                      </div>
                     </div>
                   </div>
                 </Tab>
               </Tabs>
             </div>
+            <div className="row">
+              <div className="col-12" style={{ height: "200px", backgroundColor: "#d3d3d3" }}>
+                <NotificationTextArea ref={this.notificationTextAreaRef} />
+              </div>
+            </div>
+
           </div>
         </main>
 
