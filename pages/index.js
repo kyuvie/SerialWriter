@@ -34,6 +34,7 @@ class Home extends React.Component {
     this.progressBarRef = createRef()
     this.notificationTextAreaRef = createRef()
     this.comTextareaRef = createRef()
+    this.configPageRef = createRef()
 
     this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />]
   }
@@ -56,6 +57,7 @@ class Home extends React.Component {
       this.notificationTextAreaRef.current.println("Unable to use Web Serial API")
     }
 
+    /*
     try {
       const port = await navigator.serial.requestPort();
       const serialPortInfo = port.getInfo()
@@ -74,6 +76,7 @@ class Home extends React.Component {
       this.notificationTextAreaRef.current.println("Please select a device.")
       return
     }
+    */
     /*
     this.zundamonRef.current.toExecuting()
 
@@ -198,7 +201,7 @@ class Home extends React.Component {
                         tabIndex="0"
                         style={{ height: "500px" }}
                       >
-                        <ConfigPage />
+                        <ConfigPage ref={this.configPageRef} />
                       </div>
                     </div>
                   </div>
