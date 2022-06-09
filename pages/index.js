@@ -21,12 +21,13 @@ class Home extends React.Component {
     super(props)
     this.state = {
       middleCards: new Map(),
-      fromtCards: new Map()
+      frontCards: new Map()
     }
 
     this.addToMiddleCards = this.addToMiddleCards.bind(this)
     this.asyncRun = this.asyncRun.bind(this)
     this.deleteMiddleCardCallback = this.deleteMiddleCardCallback.bind(this)
+    this.addDeviceCard = this.addDeviceCard.bind(this)
 
     this.id = 0
 
@@ -37,6 +38,20 @@ class Home extends React.Component {
     this.configPageRef = createRef()
 
     this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />]
+  }
+  
+  addDeviceCard(data) {
+    this.id += 1
+     const ref = createRef()
+    const middleCard = <MiddleCard ref={ref} key={this.id} id={this.id} deleteFunc={this.deleteMiddleCardCallback} data={data}/>
+
+    this.setState(
+      (state, props) => {
+        return { middleCards: state.middleCards.set(this.id, { ref, middleCard }) }
+      }
+    )
+    
+
   }
 
   addToMiddleCards() {
@@ -55,6 +70,7 @@ class Home extends React.Component {
   async asyncRun() {
     if (!("serial" in navigator)) {
       this.notificationTextAreaRef.current.println("Unable to use Web Serial API")
+      return
     }
 
     /*
@@ -201,7 +217,7 @@ class Home extends React.Component {
                         tabIndex="0"
                         style={{ height: "500px" }}
                       >
-                        <ConfigPage ref={this.configPageRef} />
+                        <ConfigPage ref={this.configPageRef} addDeviceCard={this.addDeviceCard} />
                       </div>
                     </div>
                   </div>

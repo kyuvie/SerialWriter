@@ -121,7 +121,7 @@ class ConfigPage extends React.Component {
                 />
                 <div className="row mb-3">
                     <div className="col-auto">
-                        <Button>Set</Button>
+                        <Button onClick={() => this.props.addDeviceCard(this.getConfig())}>Set</Button>
                     </div>
                 </div>
             </div>
