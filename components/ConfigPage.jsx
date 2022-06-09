@@ -71,6 +71,11 @@ class ConfigPage extends React.Component {
                     className='mb-3'
                     defaultChecked='true'
                 />
+                <div className="row mb-3">
+                    <div className="col-auto">
+                        <Button>Set</Button>
+                    </div>
+                </div>
             </div>
         )
     }
