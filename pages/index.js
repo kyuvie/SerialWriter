@@ -11,6 +11,7 @@ import Tab from 'react-bootstrap/Tab'
 import Form from 'react-bootstrap/Form'
 import ConfigPage from '../components/ConfigPage'
 import Button from 'react-bootstrap/Button'
+import json5 from 'json5'
 
 const sleep = (ms) => new Promise(resolve => {
   setTimeout(() => {
@@ -31,6 +32,7 @@ class Home extends React.Component {
     this.asyncRun = this.asyncRun.bind(this)
     this.deleteMiddleCardCallback = this.deleteMiddleCardCallback.bind(this)
     this.addDeviceCard = this.addDeviceCard.bind(this)
+    this.clickDownloadButton = this.clickDownloadButton.bind(this)
 
     this.id = 0
 
@@ -51,7 +53,7 @@ class Home extends React.Component {
     this.setState(
       (state, props) => {
         return {
-          middleCards: state.middleCards.set(this.id, { ref, middleCard }),
+          middleCards: state.middleCards.set(this.id, { ref, middleCard, data }),
           activeTabKey: 'home',
         }
       }
@@ -59,7 +61,7 @@ class Home extends React.Component {
 
   }
 
-  addToMiddleCards() {
+  addToMiddleCards(data) {
     this.id += 1
 
     const ref = createRef()
@@ -67,7 +69,7 @@ class Home extends React.Component {
 
     this.setState(
       (state, props) => {
-        return { middleCards: state.middleCards.set(this.id, { ref, middleCard }) }
+        return { middleCards: state.middleCards.set(this.id, { ref, middleCard, data }) }
       }
     )
   }
@@ -76,6 +78,28 @@ class Home extends React.Component {
     this.setState({
       activeTabKey: key
     })
+  }
+  
+  
+  archiveMiddleCardsToJson() {
+    const content = []
+    for (const middleCard of this.state.middleCards) {
+      content.push(middleCard[1].data)
+    }
+    return json5.stringify(content)
+  }
+  
+  clickDownloadButton() {
+    const text = this.archiveMiddleCardsToJson()
+    const blob = new Blob([text], {type: 'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    document.body.appendChild(a);
+    a.download = 'foo.txt';
+    a.href = url;
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
   }
 
   async asyncRun() {
@@ -216,7 +240,7 @@ class Home extends React.Component {
                           <Form.Control type="file" size="sm" />
                         </div>
                         <div className="col-auto px-0">
-                          <Button size="sm">Download</Button>
+                          <Button size="sm" onClick={this.clickDownloadButton}>Download</Button>
                         </div>
                       </div>
                     </div>
