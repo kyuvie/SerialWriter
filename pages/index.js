@@ -216,7 +216,7 @@ class Home extends React.Component {
                           <Form.Control type="file" size="sm" />
                         </div>
                         <div className="col-auto px-0">
-                          <Button size="sm">DL</Button>
+                          <Button size="sm">Download</Button>
                         </div>
                       </div>
                     </div>
