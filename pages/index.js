@@ -26,6 +26,7 @@ class Home extends React.Component {
       middleCards: new Map(),
       frontCards: new Map(),
       activeTabKey: 'home',
+      id: 0,
     }
 
     this.addToMiddleCards = this.addToMiddleCards.bind(this)
@@ -33,8 +34,8 @@ class Home extends React.Component {
     this.deleteMiddleCardCallback = this.deleteMiddleCardCallback.bind(this)
     this.addDeviceCard = this.addDeviceCard.bind(this)
     this.clickDownloadButton = this.clickDownloadButton.bind(this)
+    this.onChangeSequenceFile = this.onChangeSequenceFile.bind(this)
 
-    this.id = 0
 
     this.zundamonRef = createRef()
     this.progressBarRef = createRef()
@@ -46,15 +47,15 @@ class Home extends React.Component {
   }
 
   addDeviceCard(data) {
-    this.id += 1
-    const ref = createRef()
-    const middleCard = <MiddleCard ref={ref} key={this.id} id={this.id} deleteFunc={this.deleteMiddleCardCallback} data={data} title={'Config'} />
 
     this.setState(
       (state, props) => {
+        const ref = createRef()
+        const middleCard = <MiddleCard ref={ref} key={state.id} id={state.id} deleteFunc={this.deleteMiddleCardCallback} data={data} title={'Config'} />
         return {
-          middleCards: state.middleCards.set(this.id, { ref, middleCard, data }),
+          middleCards: state.middleCards.set(state.id, { ref, middleCard, data }),
           activeTabKey: 'home',
+          id: state.id + 1,
         }
       }
     )
@@ -62,14 +63,14 @@ class Home extends React.Component {
   }
 
   addToMiddleCards(data) {
-    this.id += 1
-
-    const ref = createRef()
-    const middleCard = <MiddleCard ref={ref} key={this.id} id={this.id} deleteFunc={this.deleteMiddleCardCallback} />
-
     this.setState(
       (state, props) => {
-        return { middleCards: state.middleCards.set(this.id, { ref, middleCard, data }) }
+
+        const ref = createRef()
+        const middleCard = <MiddleCard ref={ref} key={state.id} id={state.id} deleteFunc={this.deleteMiddleCardCallback} />
+        const newMap = new Map(state.middleCards)
+        newMap.set(state.id, { ref, middleCard, data })
+        return { middleCards: newMap, id: state.id + 1 }
       }
     )
   }
@@ -79,8 +80,7 @@ class Home extends React.Component {
       activeTabKey: key
     })
   }
-  
-  
+
   archiveMiddleCardsToJson() {
     const content = []
     for (const middleCard of this.state.middleCards) {
@@ -88,14 +88,14 @@ class Home extends React.Component {
     }
     return json5.stringify(content)
   }
-  
+
   clickDownloadButton() {
     const text = this.archiveMiddleCardsToJson()
-    const blob = new Blob([text], {type: 'text/plain'});
+    const blob = new Blob([text], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
+    const a = document.createElement('a');
     document.body.appendChild(a);
-    a.download = 'foo.txt';
+    a.download = 'sequence.txt';
     a.href = url;
     a.click();
     a.remove();
@@ -174,6 +174,29 @@ class Home extends React.Component {
     })
   }
 
+  onChangeSequenceFile(e) {
+    if (e.target.files.length > 0) {
+      const jsonFile = e.target.files[0];
+      // FileReaderオブジェクトを使ってファイル読み込み
+      var reader = new FileReader();
+      // ファイル読み込みに成功したときの処理
+      reader.onload = () => {
+        const array = json5.parse(reader.result);
+        if (Array.isArray(array)) {
+          for (const data of array) {
+            this.addToMiddleCards(data)
+          }
+        }
+        else {
+          alert("Invalid file")
+        }
+      };
+      // ファイル読み込みを実行
+      reader.readAsText(jsonFile);
+    } else {
+    }
+  }
+
   render() {
     const middleCards = []
 
@@ -237,7 +260,7 @@ class Home extends React.Component {
                       </div>
                       <div className="row mt-2">
                         <div className="col">
-                          <Form.Control type="file" size="sm" />
+                          <Form.Control type="file" size="sm" onChange={this.onChangeSequenceFile} />
                         </div>
                         <div className="col-auto px-0">
                           <Button size="sm" onClick={this.clickDownloadButton}>Download</Button>
