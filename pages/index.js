@@ -8,7 +8,9 @@ import NotificationTextArea from '../components/NotificationTextarea'
 import CommunicationTextarea from '../components/CommunicationTextArea'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
+import Form from 'react-bootstrap/Form'
 import ConfigPage from '../components/ConfigPage'
+import Button from 'react-bootstrap/Button'
 
 const sleep = (ms) => new Promise(resolve => {
   setTimeout(() => {
@@ -205,9 +207,17 @@ class Home extends React.Component {
                         data-bs-offset="0"
                         className="overflow-scroll"
                         tabIndex="0"
-                        style={{ height: "500px" }}
+                        style={{ height: "430px" }}
                       >
                         {middleCards}
+                      </div>
+                      <div className="row mt-2">
+                        <div className="col">
+                          <Form.Control type="file" size="sm" />
+                        </div>
+                        <div className="col-auto px-0">
+                          <Button size="sm">DL</Button>
+                        </div>
                       </div>
                     </div>
                     <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
