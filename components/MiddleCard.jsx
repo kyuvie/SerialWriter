@@ -63,7 +63,7 @@ class MiddleCard extends React.Component {
 
         return (<div className="card" style={this.state.style}>
             <div className="card-body">
-                <h5 className="card-title">{this.props.id}</h5>
+                <h5 className="card-title">{this.props.title ? this.props.title : this.props.id}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">command description</h6>
                 { dataRows }
                 <div className="row align-items-center justify-content-end pt-4">

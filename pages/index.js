@@ -44,14 +44,14 @@ class Home extends React.Component {
   addDeviceCard(data) {
     this.id += 1
     const ref = createRef()
-    const middleCard = <MiddleCard ref={ref} key={this.id} id={this.id} deleteFunc={this.deleteMiddleCardCallback} data={data} />
+    const middleCard = <MiddleCard ref={ref} key={this.id} id={this.id} deleteFunc={this.deleteMiddleCardCallback} data={data} title={'Config'} />
 
     this.setState(
       (state, props) => {
-        return { 
+        return {
           middleCards: state.middleCards.set(this.id, { ref, middleCard }),
           activeTabKey: 'home',
-         }
+        }
       }
     )
 
@@ -69,7 +69,7 @@ class Home extends React.Component {
       }
     )
   }
-  
+
   setTabKey(key) {
     this.setState({
       activeTabKey: key
