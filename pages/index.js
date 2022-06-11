@@ -21,7 +21,8 @@ class Home extends React.Component {
     super(props)
     this.state = {
       middleCards: new Map(),
-      frontCards: new Map()
+      frontCards: new Map(),
+      activeTabKey: 'home',
     }
 
     this.addToMiddleCards = this.addToMiddleCards.bind(this)
@@ -39,18 +40,20 @@ class Home extends React.Component {
 
     this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />]
   }
-  
+
   addDeviceCard(data) {
     this.id += 1
-     const ref = createRef()
-    const middleCard = <MiddleCard ref={ref} key={this.id} id={this.id} deleteFunc={this.deleteMiddleCardCallback} data={data}/>
+    const ref = createRef()
+    const middleCard = <MiddleCard ref={ref} key={this.id} id={this.id} deleteFunc={this.deleteMiddleCardCallback} data={data} />
 
     this.setState(
       (state, props) => {
-        return { middleCards: state.middleCards.set(this.id, { ref, middleCard }) }
+        return { 
+          middleCards: state.middleCards.set(this.id, { ref, middleCard }),
+          activeTabKey: 'home',
+         }
       }
     )
-    
 
   }
 
@@ -65,6 +68,12 @@ class Home extends React.Component {
         return { middleCards: state.middleCards.set(this.id, { ref, middleCard }) }
       }
     )
+  }
+  
+  setTabKey(key) {
+    this.setState({
+      activeTabKey: key
+    })
   }
 
   async asyncRun() {
@@ -174,7 +183,7 @@ class Home extends React.Component {
               </div>
             </div>
             <div className="row">
-              <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+              <Tabs defaultActiveKey='home' activeKey={this.state.activeTabKey} onSelect={(k) => this.setTabKey(k)} id="uncontrolled-tab-example">
                 <Tab eventKey="home" title="Sequence">
                   <div className="row">
                     <div className="col-4" style={{ height: "500px", backgroundColor: "#d3d3d3" }}>
@@ -206,7 +215,7 @@ class Home extends React.Component {
                     </div>
                   </div>
                 </Tab>
-                <Tab eventKey="profile" title="Config" style={{ backgroundColor: "white" }}>
+                <Tab eventKey="config" title="Config" style={{ backgroundColor: "white" }}>
                   <div className="row">
                     <div className="col-12" style={{ backgroundColor: "white" }}>
                       <div
