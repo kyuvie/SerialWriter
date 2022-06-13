@@ -72,7 +72,7 @@ class Home extends React.Component {
       (state, props) => {
 
         const ref = createRef()
-        const middleCard = <MiddleCard ref={ref} key={state.id} id={state.id} deleteFunc={this.deleteMiddleCardCallback} />
+        const middleCard = <MiddleCard ref={ref} key={state.id} id={state.id} deleteFunc={this.deleteMiddleCardCallback} data={data} />
         const newMap = new Map(state.middleCards)
         newMap.set(state.id, { ref, middleCard, data })
         return { middleCards: newMap, id: state.id + 1 }

@@ -6,7 +6,8 @@ class FrontCard extends React.Component {
     }
 
     render() {
-        return (<div className="card">
+        return (
+        <div className="card">
             <div className="card-body">
                 <h5 className="card-title">Command</h5>
                 <h6 className="card-subtitle mb-2 text-muted">command description</h6>
