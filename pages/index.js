@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import React, { useState, useRef, createRef } from 'react'
+import React, { createRef } from 'react'
 import MiddleCard from '../components/MiddleCard'
 import Zundamon from '../components/Zundamon'
-import FrontCard from '../components/FrontCard'
+import FrontCard from '../components/front_cards/FrontCard'
 import ProgressBar from '../components/ProgressBar'
 import NotificationTextArea from '../components/NotificationTextarea'
 import CommunicationTextarea from '../components/CommunicationTextArea'
@@ -12,6 +12,8 @@ import Form from 'react-bootstrap/Form'
 import ConfigPage from '../components/ConfigPage'
 import Button from 'react-bootstrap/Button'
 import json5 from 'json5'
+import RawCard from '../components/front_cards/RawCard'
+import OnlySendCard from '../components/front_cards/OnlySendCard'
 
 const sleep = (ms) => new Promise(resolve => {
   setTimeout(() => {
@@ -43,7 +45,11 @@ class Home extends React.Component {
     this.comTextareaRef = createRef()
     this.configPageRef = createRef()
 
-    this.frontCards = [<FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />]
+    this.frontCards = [
+                      <RawCard addMiddleCardFunc={this.addToMiddleCards} key={2} />,
+                      <OnlySendCard  addMiddleCardFunc={this.addToMiddleCards} key={3} />,
+<FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />,
+                    ]
   }
 
   addDeviceCard(data) {
@@ -59,7 +65,6 @@ class Home extends React.Component {
         }
       }
     )
-
   }
 
   addToMiddleCards(data) {
@@ -254,7 +259,7 @@ class Home extends React.Component {
                         data-bs-offset="0"
                         className="overflow-scroll"
                         tabIndex="0"
-                        style={{ height: "430px" }}
+                        style={{ height: "460px" }}
                       >
                         {middleCards}
                       </div>
