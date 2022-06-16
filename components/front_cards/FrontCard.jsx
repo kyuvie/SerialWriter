@@ -3,6 +3,8 @@ import React from "react"
 class FrontCard extends React.Component {
     constructor(props) {
         super(props)
+        
+        this.title = "FrontCard"
     }
 
     render() {
@@ -22,7 +24,7 @@ class FrontCard extends React.Component {
                 <div className="row align-items-center justify-content-end pt-4">
                     <div className="col-auto">
                         <button type="button" className="btn btn-primary btn-sm" onClick={() => this.props.addMiddleCardFunc(
-                            { data1: 'abcdefg', data2: 'hijklmnopqr', data3: 'This is a sample' }
+                            {title: this.title, data: { title: this.title, data1: 'abcdefg', data2: 'hijklmnopqr', data3: 'This is a sample' }}
                         )}>add</button>
                     </div>
                 </div>

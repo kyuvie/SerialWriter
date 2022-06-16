@@ -9,12 +9,17 @@ class OnlySendCard extends React.Component {
         this.state = {
             inputValue: '',
         }
+        
+        this.title = "OnlySendCard"
     }
 
     extractUserInput() {
         return new MiddleCardModel({
-            title: 'OnlySendCard',
-            inputValue: this.state.inputValue,
+            title: this.title,
+            data: {
+                title: this.title,
+                inputValue: this.state.inputValue,
+            }
         })
     }
 

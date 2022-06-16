@@ -10,12 +10,18 @@ class RawCard extends React.Component {
             inputValue: "",
             outputValue: "",
         }
+        
+        this.title = 'RawCard'
     }
 
     extractUserInput() {
         return new MiddleCardModel({
-            title: 'RawCard',
-            data: { inputValue: this.state.inputValue, outputValue: this.state.outputValue }
+            title: this.title,
+            data: { 
+                title: this.title,
+                inputValue: this.state.inputValue,
+                outputValue: this.state.outputValue
+            }
         })
     }
 
