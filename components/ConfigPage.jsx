@@ -28,7 +28,7 @@ class ConfigPage extends React.Component {
     
     getConfig() {
         // needs deep copy?
-        return {...this.state}
+        return {title: 'config', ...this.state}
     }
 
     render() {
