@@ -46,10 +46,10 @@ class Home extends React.Component {
     this.configPageRef = createRef()
 
     this.frontCards = [
-                      <RawCard addMiddleCardFunc={this.addToMiddleCards} key={2} />,
-                      <OnlySendCard  addMiddleCardFunc={this.addToMiddleCards} key={3} />,
-<FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />,
-                    ]
+      <RawCard addMiddleCardFunc={this.addToMiddleCards} key={2} />,
+      <OnlySendCard addMiddleCardFunc={this.addToMiddleCards} key={3} />,
+      <FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />,
+    ]
   }
 
   addDeviceCard(data) {
@@ -67,14 +67,21 @@ class Home extends React.Component {
     )
   }
 
-  addToMiddleCards(data) {
+  addToMiddleCards(middleCardModel) {
     this.setState(
       (state, props) => {
 
         const ref = createRef()
-        const middleCard = <MiddleCard ref={ref} key={state.id} id={state.id} deleteFunc={this.deleteMiddleCardCallback} data={data} />
+        const middleCard = <MiddleCard
+          ref={ref}
+          key={state.id}
+          id={state.id}
+          deleteFunc={this.deleteMiddleCardCallback}
+          data={middleCardModel.data}
+          title={middleCardModel.title}
+        />
         const newMap = new Map(state.middleCards)
-        newMap.set(state.id, { ref, middleCard, data })
+        newMap.set(state.id, { ref, middleCard, data: middleCardModel.data })
         return { middleCards: newMap, id: state.id + 1 }
       }
     )

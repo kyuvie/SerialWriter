@@ -1,5 +1,6 @@
 import React from "react"
 import Form from "react-bootstrap/Form"
+import MiddleCardModel from "../../data_model/MiddleCardModel"
 
 class RawCard extends React.Component {
     constructor(props) {
@@ -9,6 +10,13 @@ class RawCard extends React.Component {
             inputValue: "",
             outputValue: "",
         }
+    }
+
+    extractUserInput() {
+        return new MiddleCardModel({
+            title: 'RawCard',
+            data: { inputValue: this.state.inputValue, outputValue: this.state.outputValue }
+        })
     }
 
     render() {
@@ -39,7 +47,7 @@ class RawCard extends React.Component {
                         <Form.Control
                             size="sm"
                             type="text"
-                            placeholder="enter expression" 
+                            placeholder="enter expression"
                             value={this.state.outputValue}
                             onChange={e => this.setState({ outputValue: e.target.value })}
                         />
@@ -47,9 +55,13 @@ class RawCard extends React.Component {
                 </div>
                 <div className="row align-items-center justify-content-end pt-4">
                     <div className="col-auto">
-                        <button type="button" className="btn btn-primary btn-sm" onClick={() => this.props.addMiddleCardFunc(
-                            { inputValue: this.state.inputValue, outputValue: this.state.outputValue }
-                        )}>add</button>
+                        <button
+                            type="button"
+                            className="btn btn-primary btn-sm"
+                            onClick={() => this.props.addMiddleCardFunc(this.extractUserInput())}
+                        >
+                            add
+                        </button>
                     </div>
                 </div>
             </div>
