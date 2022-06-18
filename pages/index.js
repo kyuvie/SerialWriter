@@ -2,7 +2,6 @@ import Head from 'next/head'
 import React, { createRef } from 'react'
 import MiddleCard from '../components/MiddleCard'
 import Zundamon from '../components/Zundamon'
-import FrontCard from '../components/front_cards/FrontCard'
 import ProgressBar from '../components/ProgressBar'
 import NotificationTextArea from '../components/NotificationTextarea'
 import CommunicationTextarea from '../components/CommunicationTextArea'
@@ -12,8 +11,8 @@ import Form from 'react-bootstrap/Form'
 import ConfigPage from '../components/ConfigPage'
 import Button from 'react-bootstrap/Button'
 import json5 from 'json5'
-import RawCard from '../components/front_cards/RawCard'
 import OnlySendCard from '../components/front_cards/OnlySendCard'
+import ReceiveCard from '../components/front_cards/ReceiveCard'
 
 const sleep = (ms) => new Promise(resolve => {
   setTimeout(() => {
@@ -46,9 +45,10 @@ class Home extends React.Component {
     this.configPageRef = createRef()
 
     this.frontCards = [
-      <RawCard addMiddleCardFunc={this.addToMiddleCards} key={2} />,
-      <OnlySendCard addMiddleCardFunc={this.addToMiddleCards} key={3} />,
-      <FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />,
+      // <RawCard addMiddleCardFunc={this.addToMiddleCards} key={2} />,
+      <OnlySendCard addMiddleCardFunc={this.addToMiddleCards} key={1} />,
+      <ReceiveCard addMiddleCardFunc={this.addToMiddleCards} key={2} />,
+      // <FrontCard addMiddleCardFunc={this.addToMiddleCards} key={1} />,
     ]
   }
 
