@@ -14,35 +14,52 @@ class ConfigPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            device: null,
+            selectedUsbProductId: null,
+            selectedUsbProductId: null,
             baudRate: this.defaultBaudRate,
             dataBits: this.defaultDataBits,
             stopBits: this.defaultStopBits,
             parity: this.defaultParity,
             bufferSize: this.defaultBufferSize,
-            flowControl: this.defaultFlowControl
+            flowControl: this.defaultFlowControl,
         }
-        
+
         this.getConfig = this.getConfig.bind(this)
     }
-    
+
     getConfig() {
         // needs deep copy?
-        return {title: 'config', ...this.state}
+        return { title: 'config', ...this.state }
+    }
+
+    async setPort() {
+        if (!("serial" in navigator)) {
+            alert("Can't use WebSerial API;(")
+            return
+        }
+        try {
+            const port = await navigator.serial.requestPort()
+            this.setState((state) => {
+                return {
+                    selectedUsbProductId: port.getInfo().usbProductId,
+                    selectedUsbVendorId: port.getInfo().usbVendorId,
+                }
+            })
+        }
+        catch {
+            // user cancellation
+        }
     }
 
     render() {
+        const selectedUsbVendorId = this.state.selectedUsbVendorId ? this.state.selectedUsbVendorId: "Not Selected"
+        const selectedUsbProductId = this.state.selectedUsbProductId ? this.state.selectedUsbProductId: "Not Selected"
+
         return (
             <div className="mt-3">
-                <Button className="mb-3">Add Device</Button>
-                <Form.Group className="mb-3" controlId="configForm.DeviceInput">
-                    <Form.Label>Select Device</Form.Label>
-                    <Form.Select className="mb-3" aria-label="Device select">
-                        <option>Open this select menu</option>
-                    </Form.Select>
-                </Form.Group>
-                <div>USB Vendor Id:</div>
-                <div>USB Product Id:</div>
+                <Button className="mb-3" onClick={async () => await this.setPort()}>Set Port</Button>
+                <div>USB Vendor Id: {selectedUsbVendorId}</div>
+                <div>USB Product Id: {selectedUsbProductId}</div>
                 <Form.Group className="mb-3" controlId="configForm.BaudRateInput">
                     <Form.Label>Baud Rate</Form.Label>
                     <Form.Select

@@ -120,6 +120,7 @@ class Home extends React.Component {
       return
     }
 
+
     /*
     try {
       const port = await navigator.serial.requestPort();
@@ -140,32 +141,35 @@ class Home extends React.Component {
       return
     }
     */
-    /*
     this.zundamonRef.current.toExecuting()
 
+    // ******* start initialization *******
     let failed = false
     const step = 100.0 / this.state.middleCards.size
     let progress = 0
+    this.progressBarRef.current.percentage(progress)
 
     this.progressBarRef.current.setStriped(true)
 
     for (const [i, card] of this.state.middleCards) {
       card.ref.current.toWhite()
     }
+    // ******** end initialization **********
 
     for (const [i, card] of this.state.middleCards) {
-      await sleep(2000)
+      if (card.data.title == 'config') {
+      }
+      /*
       if (i % 3 == 0) {
         card.ref.current.toRed()
         this.zundamonRef.current.toFail()
         failed = true
         break
       }
-      else {
-        card.ref.current.toGreen()
-      }
+      */
+
+      card.ref.current.toGreen()
       progress += step
-      console.log(progress)
       this.progressBarRef.current.percentage(progress)
     }
     if (!failed) {
@@ -173,7 +177,6 @@ class Home extends React.Component {
     }
 
     this.progressBarRef.current.setStriped(false)
-    */
   }
 
   deleteMiddleCardCallback(key) {
