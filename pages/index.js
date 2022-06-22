@@ -155,9 +155,30 @@ class Home extends React.Component {
       card.ref.current.toWhite()
     }
     // ******** end initialization **********
+    let foundPort = null
 
     for (const [i, card] of this.state.middleCards) {
-      if (card.data.title == 'config') {
+      if (card.data.title === 'config') {
+        console.log(card.data)
+        // search port
+        for (const port of await navigator.serial.getPorts()) {
+          if (port.getInfo().usbProductId === card.data.selectedUsbProductId && 
+              port.getInfo().usbVendorId === card.data.selectedUsbVendorId) {
+                foundPort = port
+              }
+        }
+        if (foundPort === null) {
+          this.notificationTextAreaRef.current.println("Couldn't find available port")
+          return
+        }
+        
+        try {
+        await foundPort.open(card.data)
+        }
+        catch(e) {
+          this.notificationTextAreaRef.current.println("Invalid SerialOptions or Invalid State")
+          return
+        }
       }
       /*
       if (i % 3 == 0) {
@@ -167,6 +188,7 @@ class Home extends React.Component {
         break
       }
       */
+      await foundPort.close()
 
       card.ref.current.toGreen()
       progress += step
