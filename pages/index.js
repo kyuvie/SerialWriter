@@ -188,12 +188,14 @@ class Home extends React.Component {
         break
       }
       */
-      await foundPort.close()
 
       card.ref.current.toGreen()
       progress += step
       this.progressBarRef.current.percentage(progress)
     }
+
+    await foundPort.close()
+
     if (!failed) {
       this.zundamonRef.current.toHappy()
     }
