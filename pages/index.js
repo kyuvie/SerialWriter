@@ -162,23 +162,52 @@ class Home extends React.Component {
         console.log(card.data)
         // search port
         for (const port of await navigator.serial.getPorts()) {
-          if (port.getInfo().usbProductId === card.data.selectedUsbProductId && 
-              port.getInfo().usbVendorId === card.data.selectedUsbVendorId) {
-                foundPort = port
-              }
+          if (port.getInfo().usbProductId === card.data.selectedUsbProductId &&
+            port.getInfo().usbVendorId === card.data.selectedUsbVendorId) {
+            foundPort = port
+          }
         }
         if (foundPort === null) {
           this.notificationTextAreaRef.current.println("Couldn't find available port")
           return
         }
-        
+
         try {
-        await foundPort.open(card.data)
+          await foundPort.close()
+        } catch (e) {
+
         }
-        catch(e) {
+        try {
+          await foundPort.open(card.data)
+          this.notificationTextAreaRef.current.println("Open successfully")
+        }
+        catch (e) {
+          this.notificationTextAreaRef.current.println(foundPort.state)
           this.notificationTextAreaRef.current.println("Invalid SerialOptions or Invalid State")
+          this.notificationTextAreaRef.current.println(e.message)
           return
         }
+      }
+      else if (card.data.title === 'OnlySendCard') {
+        let data = card.data.inputValue.split(',').map(s => parseInt(s))
+        data = Uint8Array.from(data)
+        await this.serialSend(foundPort, data)
+      }
+      else if (card.data.title === 'ReceiveCard' && foundPort.readable) {
+        const start = Date.now()
+        const reader = foundPort.readable.getReader()
+        // timeout
+        while (Date.now() - start < 1000) {
+          const { value, done } = await reader.read();
+          if (done) {
+            // |reader| has been canceled.
+            break;
+          }
+          // Do something with |value|...
+          this.comTextareaRef.current.println("<-" + value.toString())
+        }
+        
+        reader.releaseLock()
       }
       /*
       if (i % 3 == 0) {
@@ -195,12 +224,20 @@ class Home extends React.Component {
     }
 
     await foundPort.close()
+    this.notificationTextAreaRef.current.println("Close successfully")
 
     if (!failed) {
       this.zundamonRef.current.toHappy()
     }
 
     this.progressBarRef.current.setStriped(false)
+  }
+
+  async serialSend(openedPort, uint8array) {
+    this.comTextareaRef.current.println("-> " + uint8array.toString())
+    const writer = openedPort.writable.getWriter()
+    await writer.write(uint8array)
+    await writer.close()
   }
 
   deleteMiddleCardCallback(key) {
